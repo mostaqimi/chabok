@@ -5,7 +5,7 @@ services:
       context: ./backend/
     volumes:
       - ./backend/:/usr/src/app
-      - ./backend/node_modules:/usr/src/app/node_modules
+      - /usr/src/app/node_modules
     command: npm run start:dev
 networks:
   chabok:
