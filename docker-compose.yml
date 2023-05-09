@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  chabok-service:
+    build:
+      context: ./backend/
+    command: npm start
+    restart: on-failure
+    env_file:
+      - .env
+    ports:
+      - ${CHABOK_HOST_PORT}:3000
+    networks:
+      - chabok
+
+  mongo1:
+    image: 'mongo'
+    hostname: mongo-chabok
+    container_name: mongo-chabok
+    restart: on-failure
+    env_file:
+      - .env
+    volumes:
+      - ./persistent-data/mongo1-volume/data:/data/db
+    ports:
+      - ${MONGO1_HOST_PORT}:27017
+    networks:
+      - chabok
+
+networks:
+  chabok:
+    driver: bridge 

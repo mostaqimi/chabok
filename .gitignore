@@ -1,0 +1,4 @@
+backend/node_modules
+persistent-data
+backend/package-lock.json
+backend/dist
